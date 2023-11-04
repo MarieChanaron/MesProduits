@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProduitsComponent } from './produits/produits.component';
+import { ProduitsComponent } from './components/produits/produits.component';
+import { AddProduitComponent } from './components/add-produit/add-produit.component';
+import { UpdateProduitComponent } from './components/update-produit/update-produit.component';
 
 const routes: Routes = [
-  {path: "produits", component: ProduitsComponent}
+  {path: "", redirectTo: "produits", pathMatch: "full"},
+  {path: "produits", component: ProduitsComponent},
+  {path: "add-produit", component: AddProduitComponent}, 
+  {path: "update-produit/:id", component: UpdateProduitComponent}
 ];
 
 @NgModule({
