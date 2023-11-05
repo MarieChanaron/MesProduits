@@ -28,7 +28,7 @@ export class UpdateProduitComponent implements OnInit {
     this.formattedDate = this.datePipe.transform(this.currentProduit.dateCreation, 'yyyy-MM-dd')!;
   }
 
-  updateProduit(produit: Produit): void {
+  public updateProduit(produit: Produit): void {
     this.service.updateProduit(produit);
     this.router.navigate(["produits"]);
   }

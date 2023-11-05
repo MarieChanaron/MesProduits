@@ -8,22 +8,26 @@ import { ProduitService } from 'src/app/service/produit.service';
 })
 export class ProduitsComponent implements OnInit {
 
-  produits?: Produit[];
+  private _produits!: Produit[];
 
   constructor(private service: ProduitService) { // Injection des dépendances
   }
 
-  ngOnInit(): void {
-    this.produits = this.service.getProduits();
+  public get produits(): Produit[] {
+    return this._produits;
   }
 
-  deleteProduit(produit: Produit): void {
+  ngOnInit(): void {
+    this._produits = this.service.produits;
+  }
+
+  public deleteProduit(produit: Produit): void {
     const confirmation = confirm("Êtes-vous sûr ?")
     if (confirmation) this.service.deleteProduit(produit);
   }
 
-  trierProduits(): void {
-    this.produits! = this.produits!.sort((n1, n2) => {
+  public trierProduits(): void {
+    this._produits = this.produits!.sort((n1, n2) => {
       if (n1.idProduit! > n2.idProduit!) {
         return 1;
       } else if (n1.idProduit! > n2.idProduit!) {
