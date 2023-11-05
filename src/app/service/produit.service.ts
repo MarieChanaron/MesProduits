@@ -1,57 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Produit } from '../model/produit.model';
+import { CategorieService } from './categorie.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
 
-  produits: Produit[];
+  private _produits: Produit[];
 
-  constructor() {
-    this.produits = [
-      {
-        idProduit: 1,
-        nomProduit: "PC Asus",
-        prixProduit: 3000.600,
-        dateCreation: new Date("01/14/2011")
-      },
-      {
-        idProduit: 2,
-        nomProduit: "Imprimante Epson",
-        prixProduit: 450,
-        dateCreation: new Date("12/17/2010")
-      },
-      {
-        idProduit: 3,
-        nomProduit: "Tablette Samsung",
-        prixProduit: 900.123,
-        dateCreation: new Date("02/20/2020")
-      }
+  constructor(private categorieService: CategorieService) {
+    this._produits = [
+      new Produit(1, "PC Asus", 3000.60, new Date("01/14/2011"), categorieService.categories[1]),
+      new Produit(2, "Imprimante Epson", 450, new Date("12/17/2010"), categorieService.categories[2]),
+      new Produit(3, "Tablette Samsung", 900.123, new Date("02/20/2020"), categorieService.categories[3])
     ];
   }
 
-  getProduits(): Produit[] {
-    return this.produits;
+  public get produits(): Produit[] {
+    return this._produits;
   }
 
-  getProduit(id: number) {
+  public getProduit(id: number): Produit {
     const produit: Produit = this.produits.find(
       el => el.idProduit === id
     )!;
     return produit;
   }
 
-  addProduit(produit: Produit): void {
+  public addProduit(produit: Produit): void {
     this.produits.push(produit);
   }
 
-  deleteProduit(produit: Produit): void {
+  public deleteProduit(produit: Produit): void {
     const index: number = this.produits.indexOf(produit, 0);
     if (index > -1) this.produits.splice(index, 1);
   }
 
-  updateProduit(produit: Produit): void {
+  public updateProduit(produit: Produit): void {
     const id: number = produit.idProduit!;
     const prod: Produit = this.getProduit(id);
     const index: number = this.produits.indexOf(prod, 0);
