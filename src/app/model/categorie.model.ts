@@ -1,6 +1,6 @@
 export class Categorie {
 
-    private _idCat!: number; // ou idCat?: number;
+    private _idCat!: number;
     private _nomCat!: string;
 
     constructor(id: number, nom: string) {

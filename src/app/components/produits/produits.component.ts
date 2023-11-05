@@ -13,13 +13,17 @@ export class ProduitsComponent implements OnInit {
   constructor(private service: ProduitService) { // Injection des dépendances
   }
 
+  ngOnInit(): void {
+    this._produits = this.service.produits;
+  }
+
+  // Getters
+
   public get produits(): Produit[] {
     return this._produits;
   }
 
-  ngOnInit(): void {
-    this._produits = this.service.produits;
-  }
+  // Methods
 
   public deleteProduit(produit: Produit): void {
     const confirmation = confirm("Êtes-vous sûr ?")

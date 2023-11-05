@@ -11,9 +11,9 @@ export class ProduitService {
 
   constructor(private categorieService: CategorieService) {
     this._produits = [
-      new Produit(1, "PC Asus", 3000.60, new Date("01/14/2011"), categorieService.categories[1]),
-      new Produit(2, "Imprimante Epson", 450, new Date("12/17/2010"), categorieService.categories[2]),
-      new Produit(3, "Tablette Samsung", 900.123, new Date("02/20/2020"), categorieService.categories[3])
+      new Produit(1, "PC Asus", 3000.60, new Date("01/14/2011"), this.categorieService.categories[1]),
+      new Produit(2, "Imprimante Epson", 450, new Date("12/17/2010"), this.categorieService.categories[2]),
+      new Produit(3, "Tablette Samsung", 900.123, new Date("02/20/2020"), this.categorieService.categories[3])
     ];
   }
 

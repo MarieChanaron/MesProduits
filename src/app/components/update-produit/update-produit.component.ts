@@ -12,8 +12,8 @@ import { ProduitService } from 'src/app/service/produit.service';
 })
 export class UpdateProduitComponent implements OnInit {
 
-  currentProduit!: Produit;
-  formattedDate!: string;
+  private _currentProduit!: Produit;
+  private _formattedDate!: string;
 
   constructor(
     private service: ProduitService,
@@ -24,9 +24,27 @@ export class UpdateProduitComponent implements OnInit {
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.params['id'];
-    this.currentProduit = this.service.getProduit(Number(id))!;
-    this.formattedDate = this.datePipe.transform(this.currentProduit.dateCreation, 'yyyy-MM-dd')!;
+    this._currentProduit = this.service.getProduit(Number(id))!;
+    this._formattedDate = this.datePipe.transform(this._currentProduit.dateCreation, 'yyyy-MM-dd')!;
   }
+
+  // Getters
+
+  public get currentProduit(): Produit {
+    return this._currentProduit;
+  }
+
+  public get formattedDate(): string {
+    return this._formattedDate;
+  }
+
+  // Setters
+
+  public set formattedDate(date: string) {
+    this._formattedDate = date;
+  }
+
+  // Methods
 
   public updateProduit(produit: Produit): void {
     this.service.updateProduit(produit);
