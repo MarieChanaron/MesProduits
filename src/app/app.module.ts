@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProduitsComponent } from './components/produits/produits.component';
 import { AddProduitComponent } from './components/add-produit/add-produit.component';
 import { UpdateProduitComponent } from './components/update-produit/update-produit.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { UpdateProduitComponent } from './components/update-produit/update-produ
     AppRoutingModule, 
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
