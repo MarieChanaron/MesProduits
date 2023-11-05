@@ -36,7 +36,7 @@ export class ProduitService {
   }
 
   getProduit(id: number) {
-    const produit = this.produits.find(
+    const produit: Produit = this.produits.find(
       el => el.idProduit === id
     )!;
     return produit;
@@ -47,13 +47,15 @@ export class ProduitService {
   }
 
   deleteProduit(produit: Produit): void {
-    const index = this.produits.indexOf(produit, 0);
+    const index: number = this.produits.indexOf(produit, 0);
     if (index > -1) this.produits.splice(index, 1);
   }
 
   updateProduit(produit: Produit): void {
     const id: number = produit.idProduit!;
-    this.produits[id] = produit;
+    const prod: Produit = this.getProduit(id);
+    const index: number = this.produits.indexOf(prod, 0);
+    this.produits[index] = produit;
   }
 
 }

@@ -17,9 +17,20 @@ export class ProduitsComponent implements OnInit {
     this.produits = this.service.getProduits();
   }
 
-  deleteProduit(produit: Produit) {
+  deleteProduit(produit: Produit): void {
     const confirmation = confirm("Êtes-vous sûr ?")
     if (confirmation) this.service.deleteProduit(produit);
   }
 
+  trierProduits(): void {
+    this.produits! = this.produits!.sort((n1, n2) => {
+      if (n1.idProduit! > n2.idProduit!) {
+        return 1;
+      } else if (n1.idProduit! > n2.idProduit!) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  }
 }

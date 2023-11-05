@@ -8,21 +8,45 @@
     <form action="#">
         <div class="col-sm-2 col-md-2 col-lg-2">
             <label for="id-produit">ID produit</label>
-            <input type="text" name="idProduit" class="form-control" id="id-produit" [(ngModel)]="currentProduit.idProduit">
+            <input
+                readonly
+                type="text"
+                name="idProduit"
+                class="form-control"
+                id="id-produit"
+                [(ngModel)]="currentProduit.idProduit"
+            >
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label for="nom-produit">Nom du produit</label>
-            <input type="text" name="nomProduit" class="form-control" id="nom-produit" [(ngModel)]="currentProduit.nomProduit">
+            <input 
+                type="text"
+                name="nomProduit"
+                class="form-control"
+                id="nom-produit"
+                [(ngModel)]="currentProduit.nomProduit"
+            >
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             <label for="prix-produit">Prix du produit</label>
-            <input type="number" name="prixProduit" class="form-control" id="prix-produit" [(ngModel)]="currentProduit.prixProduit">
+            <input 
+                type="number" 
+                name="prixProduit" 
+                class="form-control" 
+                id="prix-produit"
+                [(ngModel)]="currentProduit.prixProduit"
+            >
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label for="date-creation">Date de création</label>
-            <input type="date" name="dateCreation" class="form-control" id="date-creation" 
-            [(ngModel)]="currentProduit.dateCreation" 
-            (ngModelChange)="currentProduit.dateCreation=$event">
+            <input 
+                type="date" 
+                name="dateCreation" 
+                class="form-control" 
+                id="date-creation"
+                [ngModel]="currentProduit.dateCreation"
+                (ngModelChange)="currentProduit.dateCreation=$event"
+            >
         </div>
         <div class="mt-2">
             <button type="submit" class="btn btn-success" (click)="updateProduit(currentProduit)">Modifier</button>
