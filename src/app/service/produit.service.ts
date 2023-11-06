@@ -30,7 +30,6 @@ export class ProduitService {
 
   public addProduit(produit: Produit): void {
     this.produits.push(produit);
-    console.log(produit);
   }
 
   public deleteProduit(produit: Produit): void {
