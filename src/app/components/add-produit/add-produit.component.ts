@@ -63,6 +63,7 @@ export class AddProduitComponent implements OnInit {
       this.router.navigate(["produits"]);
     }, 1000);
     const clearTimeout: Function = () => clearTimeout(timeout);
+    // TODO: revoir les promises et le timeout
     return clearTimeout;
   }
 
