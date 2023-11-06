@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Categorie } from '../model/categorie.model';
+import { Console } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,17 @@ export class CategorieService {
     ];
   }
 
+  // Getters
+
   public get categories(): Categorie[] {
     return this._categories;
   }
 
+  // Methods
+
   public getCategorie(id: number): Categorie {
-    return this.categories.find(
-      cat => cat.idCat === id)!;
+    return  this._categories.find(
+      cat => cat.idCat === id
+    )!;
   }
 }

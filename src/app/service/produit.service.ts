@@ -22,7 +22,7 @@ export class ProduitService {
   }
 
   public getProduit(id: number): Produit {
-    const produit: Produit = this.produits.find(
+    const produit: Produit = this._produits.find(
       el => el.idProduit === id
     )!;
     return produit;
@@ -30,6 +30,7 @@ export class ProduitService {
 
   public addProduit(produit: Produit): void {
     this.produits.push(produit);
+    console.log(produit);
   }
 
   public deleteProduit(produit: Produit): void {
